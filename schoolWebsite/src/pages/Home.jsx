@@ -523,7 +523,15 @@ useEffect(() => {
         style={{ border: 0 }}
         allowFullScreen=""
         loading="lazy"
-      ></iframe>
+      ></iframe><iframe
+  title="Ujjwala Global Academy Location"
+  src="https://maps.google.com/maps?q=Ujjwala%20Global%20Academy%20Gosainganj%20Lucknow&t=&z=17&ie=UTF8&iwloc=&output=embed"
+  width="100%"
+  height="500"
+  style={{ border: 0 }}
+  loading="lazy"
+  allowFullScreen
+/>
     </div>
   </div>
 </section>

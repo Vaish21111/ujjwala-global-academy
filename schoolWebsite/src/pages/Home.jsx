@@ -33,56 +33,30 @@ const Home = () => {
     awards: 0,
     years: 0
   });
+const facts = [
+  "Reading for 20 minutes daily improves vocabulary and comprehension.",
+  "Education is the passport to the future.",
+  "Curiosity is the first step toward learning.",
+  "Sports help students develop teamwork and leadership.",
+  "Every child has unique talents waiting to be discovered.",
+  "Small daily efforts lead to big achievements.",
+  "Learning never stops, even outside the classroom.",
+  "Good habits built in school last a lifetime.",
+  "Creativity and knowledge go hand in hand.",
+  "Success begins with consistent practice."
+];
 
-  // Fun Fact Generator State
-  const [funFact, setFunFact] = useState('');
-  const [isLoadingFact, setIsLoadingFact] = useState(true);
-  const [factError, setFactError] = useState(false);
-  const [showFunFact, setShowFunFact] = useState(true);
-  const scrollTimeoutRef = useRef(null);
+const [factIndex, setFactIndex] = useState(0);
+const [showFunFact, setShowFunFact] = useState(true);
+const scrollTimeoutRef = useRef(null);
 
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 300], [0, 100]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+useEffect(() => {
+  const interval = setInterval(() => {
+    setFactIndex((prev) => (prev + 1) % facts.length);
+  }, 5000);
 
-  // Fetch Fun Fact function
-  const fetchFunFact = async () => {
-    try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
-
-      setIsLoadingFact(true);
-      setFactError(false);
-      const response = await fetch(`${API_BASE_URL}/api/fun`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch fun fact');
-      }
-      
-      const data = await response.json();
-      if (data && data.length > 0) {
-        setFunFact(data[0].fact);
-      } else {
-        setFactError(true);
-      }
-    } catch (error) {
-      console.error('Error fetching fun fact:', error);
-      setFactError(true);
-    } finally {
-      setIsLoadingFact(false);
-    }
-  };
-
-  // Fetch Fun Fact on component mount
-  useEffect(() => {
-    fetchFunFact();
-  }, []);
-
+  return () => clearInterval(interval);
+}, []);
   useEffect(() => {
     const animateCounts = () => {
       const targets = { students: 300, teachers: 20, awards: 5, years: 6 };
@@ -513,13 +487,13 @@ const Home = () => {
                   </svg>
                 </button>
                 <button
-                  onClick={fetchFunFact}
-                  disabled={isLoadingFact}
+                  onClick={() => setFactIndex((prev) => (prev + 1) % facts.length)}
+            
                   className="text-emerald-600 hover:text-emerald-800 p-1 rounded-full hover:bg-emerald-200/50 transition-colors"
                   title="Get another fact"
                 >
                   <svg 
-                    className={`w-3 h-3 ${isLoadingFact ? 'animate-spin' : ''}`} 
+                    className="w-3 h-3"
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -536,26 +510,15 @@ const Home = () => {
             </div>
             {/* Content */}
             <div className="p-3 bg-white">
-              {isLoadingFact ? (
-                <div className="flex items-center justify-center space-x-2 py-1">
-                  <div className="w-4 h-4 border-2 border-emerald-200 border-t-emerald-500 rounded-full animate-spin"></div>
-                  <span className="text-gray-500 text-xs">Loading...</span>
-                </div>
-              ) : factError ? (
-                <p className="text-gray-600 text-xs italic">
-                  "Learning is a treasure that will follow its owner everywhere."
-                </p>
-              ) : (
-                <motion.p
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="text-gray-700 text-xs leading-relaxed"
-                >
-                  {funFact}
-                </motion.p>
-              )}
-            </div>
+  <motion.p
+    initial={{ opacity: 0, y: 5 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.2 }}
+    className="text-gray-700 text-xs leading-relaxed"
+  >
+    {facts[factIndex]}
+  </motion.p>
+</div>
           </div>
         </motion.div>
       )}

@@ -23,7 +23,7 @@ const LoadingScreen = () => {
           transition={{ delay: 0.3, duration: 0.5 }}
           className="text-2xl font-bold text-gray-800 mb-2"
         >
-          Ujjwala Academy
+          Ujjwala Global Academy
         </motion.h1>
         
         <motion.p

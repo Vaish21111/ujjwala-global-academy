@@ -249,7 +249,7 @@ useEffect(() => {
               Learn More
             </Link>
           </motion.div>
-          </motion.div>
+        
 
 <motion.div
   initial={{ opacity: 0, y: 30 }}

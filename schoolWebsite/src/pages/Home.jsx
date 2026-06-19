@@ -281,7 +281,7 @@ useEffect(() => {
 </div>
 </section>
         </div>
-      </section>
+      
 
       {/* Quick Access Section */}
       <section className="py-16 bg-gray-50">

@@ -502,6 +502,31 @@ useEffect(() => {
           </motion.div>
         </div>
       </section>
+      {/* Location Map Section */}
+<section className="py-16 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-10">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Visit Our Campus
+      </h2>
+      <p className="text-lg text-gray-600">
+        Kisan Path, Meesa Road, Noorpur Baheta, Gosain Ganj, Lucknow
+      </p>
+    </div>
+
+    <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+      <iframe
+        title="Ujjwala Global Academy Location"
+        src="https://maps.google.com/maps?q=Kisan%20Path%20Meesa%20Road%20Noorpur%20Baheta%20Lucknow&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        width="100%"
+        height="450"
+        style={{ border: 0 }}
+        allowFullScreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</section>
       {/* Compact Fun Fact Generator */}
       {showFunFact && (
         <motion.div

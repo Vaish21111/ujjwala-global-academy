@@ -193,19 +193,41 @@ useEffect(() => {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold mb-6"
           >
-            Welcome to Ujjwala Global Academy
+            Ujjwala Global Academy
           </motion.h1>
           
           {/* Fun Fact Generator - Moved to bottom right corner */}
           
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-8 text-emerald-100"
-          >
-            Excellence in Education with Higher Power - Established 2020
-          </motion.p>
+          <div className="mb-8">
+  <motion.p
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.2 }}
+    className="text-xl md:text-2xl text-emerald-100 font-medium"
+  >
+    Empowering Young Minds from Nursery to Class XII
+  </motion.p>
+
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.3 }}
+    className="mt-4 inline-block bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2"
+  >
+    <span className="text-white font-semibold">
+      Affiliated by National Board of Education (BSB)
+    </span>
+  </motion.div>
+
+  <motion.p
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.4 }}
+    className="mt-4 text-lg text-emerald-100"
+  >
+    Academic Excellence • Character Building • Future Readiness
+  </motion.p>
+</div>
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -227,6 +249,37 @@ useEffect(() => {
               Learn More
             </Link>
           </motion.div>
+          </motion.div>
+
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.6 }}
+  className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+>
+  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4">
+    <div className="text-2xl mb-2">🏫</div>
+    <div className="text-sm font-semibold">Nursery - XII</div>
+  </div>
+
+  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4">
+    <div className="text-2xl mb-2">📚</div>
+    <div className="text-sm font-semibold">BSB Affiliated</div>
+  </div>
+
+  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4">
+    <div className="text-2xl mb-2">👩‍🏫</div>
+    <div className="text-sm font-semibold">Expert Faculty</div>
+  </div>
+
+  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4">
+    <div className="text-2xl mb-2">🎯</div>
+    <div className="text-sm font-semibold">Holistic Development</div>
+  </div>
+</motion.div>
+
+</div>
+</section>
         </div>
       </section>
 

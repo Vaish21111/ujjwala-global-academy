@@ -280,7 +280,7 @@ useEffect(() => {
 
 </div>
 </section>
-        </div>
+        
       
 
       {/* Quick Access Section */}

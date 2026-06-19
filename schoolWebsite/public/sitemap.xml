@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://ujjwalaglobalacademy.com/</loc>
   </url>
+
+  <url>
+    <loc>https://ujjwalaglobalacademy.com/about</loc>
+  </url>
+
+  <url>
+    <loc>https://ujjwalaglobalacademy.com/academics</loc>
+  </url>
+
+  <url>
+    <loc>https://ujjwalaglobalacademy.com/admissions</loc>
+  </url>
+
+  <url>
+    <loc>https://ujjwalaglobalacademy.com/campus-life</loc>
+  </url>
+
+  <url>
+    <loc>https://ujjwalaglobalacademy.com/contact</loc>
+  </url>
+
 </urlset>

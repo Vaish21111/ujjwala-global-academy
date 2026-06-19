@@ -50,6 +50,9 @@ const [factIndex, setFactIndex] = useState(0);
 const [showFunFact, setShowFunFact] = useState(true);
 const scrollTimeoutRef = useRef(null);
 
+const { scrollY } = useScroll();
+const y = useTransform(scrollY, [0, 300], [0, 100]);
+const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 useEffect(() => {
   const interval = setInterval(() => {
     setFactIndex((prev) => (prev + 1) % facts.length);

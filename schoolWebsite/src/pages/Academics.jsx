@@ -32,6 +32,30 @@ const Academics = () => {
       subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Computer Science', 'Languages', 'Physical Education'],
       description: 'Building critical thinking and analytical skills.'
     },
+    {
+  title: "Secondary (Grades 9-10)",
+  description: "Strengthening conceptual understanding and preparing students for board examinations.",
+  subjects: [
+    "English",
+    "Mathematics",
+    "Science",
+    "Social Studies",
+    "Computer Science",
+    "Physical Education"
+  ]
+},
+{
+  title: "Higher Secondary (Grades 11-12)",
+  description: "Advanced academic preparation with stream-focused learning and career readiness.",
+  subjects: [
+    "English",
+    "Physics",
+    "Chemistry",
+    "Mathematics",
+    "Biology",
+    "Computer Science"
+  ]
+}
     // {
     //   grade: 'Secondary (Grades 9-10)',
     //   subjects: ['English', 'Mathematics', 'Science', 'Social Studies', 'Computer Science', 'Languages', 'Physical Education'],

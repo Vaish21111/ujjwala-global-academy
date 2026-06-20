@@ -532,6 +532,9 @@ const Admissions = () => {
                   <option value="VI">Class VI</option>
                   <option value="VII">Class VII</option>
                   <option value="VIII">Class VIII</option>
+                  <option value="IX">Class IX</option>
+                  <option value="XI">Class XI</option>
+                 
                 </select>
                 {formErrors.grade && (
                   <span className="text-red-500 text-xs mt-1 block">{formErrors.grade}</span>

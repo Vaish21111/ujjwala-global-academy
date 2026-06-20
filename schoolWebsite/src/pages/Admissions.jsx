@@ -35,7 +35,7 @@ const Admissions = () => {
 
   useEffect(() => {
     // Initialize EmailJS with your public key
-    emailjs.init("KPFBdqfnUlag-ZKY"); // Replace with your actual EmailJS public key
+    emailjs.init("VVZUKwaGyGRJcTdvc"); // Replace with your actual EmailJS public key
   }, []);
 
   const validateForm = () => {
@@ -244,7 +244,36 @@ const Admissions = () => {
       admission: '₹2000/-',
       examFee: '₹300 + ₹300',
       description: 'Grade 8'
-    }
+    },
+    {
+  grade: 'IX',
+  monthlyComputer: '₹1600/-',
+  admission: '₹2000/-',
+  examFee: '₹400 + ₹400',
+  description: 'Grade 9'
+},
+{
+  grade: 'X',
+  monthlyComputer: '₹1600/-',
+  admission: '₹2000/-',
+  examFee: '₹400 + ₹400',
+  description: 'Grade 10'
+},
+{
+  grade: 'XI',
+  monthlyComputer: '₹1800/-',
+  admission: '₹2000/-',
+  examFee: '₹500 + ₹500',
+  description: 'Grade 11'
+},
+{
+  grade: 'XII',
+  monthlyComputer: '₹1800/-',
+  admission: '₹2000/-',
+  examFee: '₹500 + ₹500',
+  description: 'Grade 12'
+}
+    
   ];
 
   return (

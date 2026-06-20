@@ -82,7 +82,7 @@ const Admissions = () => {
     try {
       // Prepare the template parameters
       const templateParams = {
-        to_email: 'muskanblp05@gmail@gmail.com',
+        to_email: 'ujjwalaglobalacademy@gmail.com',
         from_name: formData.studentName,
         from_email: formData.email,
         reply_to: formData.email,
@@ -107,8 +107,8 @@ const Admissions = () => {
 
       // Send email using EmailJS
       const response = await emailjs.send(
-        'service_79ggywn',
-        'template_wvt2f8p',
+        'service_2h0zn39',
+        'template_e9vlrfz',
         templateParams
       );
 

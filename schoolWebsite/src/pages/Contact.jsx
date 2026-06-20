@@ -33,7 +33,7 @@ const Contact = () => {
 
   useEffect(() => {
     // Initialize EmailJS with your public key
-    emailjs.init("KPFBdqfnUlag-ZKY"); // Replace with your actual EmailJS public key
+    emailjs.init("VVZUKwaGyGRJcTdvc"); // Replace with your actual EmailJS public key
   }, []);
 
   const validateForm = () => {
@@ -71,14 +71,15 @@ const Contact = () => {
     try {
       // Send email directly using EmailJS
       const response = await emailjs.send(
-  'service_79ggywn',
-  'template_wvt2f8p',
+  'service_2h0zn39',
+  'template_e9vlrfz',
   {
     name: formData.name,
     email: formData.email,
+    subject: formData.subject,
     message: formData.message,
   },
-  'KPFBdqfnUlag-ZKY'
+  'VVZUKwaGyGRJcTdvc'
 );emailjs.send
 
       if (response.status === 200) {

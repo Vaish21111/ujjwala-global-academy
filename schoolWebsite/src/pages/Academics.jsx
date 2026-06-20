@@ -33,7 +33,7 @@ const Academics = () => {
       description: 'Building critical thinking and analytical skills.'
     },
     {
-  title: "Secondary (Grades 9-10)",
+  grade: "Secondary (Grades 9-10)",
   description: "Strengthening conceptual understanding and preparing students for board examinations.",
   subjects: [
     "English",
@@ -45,7 +45,7 @@ const Academics = () => {
   ]
 },
 {
-  title: "Higher Secondary (Grades 11-12)",
+  grade: "Higher Secondary (Grades 11-12)",
   description: "Advanced academic preparation with stream-focused learning and career readiness.",
   subjects: [
     "English",

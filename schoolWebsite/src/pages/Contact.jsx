@@ -33,7 +33,7 @@ const Contact = () => {
 
   useEffect(() => {
     // Initialize EmailJS with your public key
-    emailjs.init("VroDQNpLp9LP6vzXE"); // Replace with your actual EmailJS public key
+    emailjs.init("KPFBdqfnUlag-ZKY"); // Replace with your actual EmailJS public key
   }, []);
 
   const validateForm = () => {
@@ -71,10 +71,10 @@ const Contact = () => {
     try {
       // Send email directly using EmailJS
       const response = await emailjs.send(
-        'service_6qa6ajv', // Replace with your actual EmailJS service ID
-        'template_aa00zxk', // Replace with your actual EmailJS template ID
+        'service_79ggywn', // Replace with your actual EmailJS service ID
+        'template_wvt2f8p', // Replace with your actual EmailJS template ID
         {
-          to_email: 'muskanblp05@gmail.com',
+          to_email: 'ujjwalaglobalacademy@gmail.com',
           from_name: formData.name,
           from_email: formData.email,
           subject: formData.subject,
@@ -226,7 +226,7 @@ const Contact = () => {
                   <h2 className="text-2xl font-bold text-gray-900">Send us a Message</h2>
                 </div>
                 <p className="text-gray-600 mb-6">
-                  Have a question or want to learn more about Ujjwala Academy? Send us a message and we'll get back to you as soon as possible.
+                  Have a question or want to learn more about Ujjwala Global Academy? Send us a message and we'll get back to you as soon as possible.
                 </p>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -369,7 +369,7 @@ const Contact = () => {
                      {/* 
                        ✅ Coordinates Updated: 26.819530446791813, 81.0801202512669
                        Location: Kisan Path, Meesa Road, Noorpur Baheta, Gosaiganj, Lucknow
-                       Map centered around Ujjwala Academy with custom pin overlay
+                       Map centered around Ujjwala Global Academy with custom pin overlay
                      */}
                      <iframe
                        src="https://www.openstreetmap.org/export/embed.html?bbox=80.9801202512669,26.719530446791813,81.1801202512669,26.919530446791813&layer=mapnik&marker=26.819530446791813,81.0801202512669"
@@ -378,7 +378,7 @@ const Contact = () => {
                        style={{ border: 0 }}
                        allowFullScreen=""
                        loading="lazy"
-                       title="Ujjwala Academy Location"
+                       title="Ujjwala Global Academy Location"
                        className="rounded-lg"
                      />
                     
@@ -399,7 +399,7 @@ const Contact = () => {
                       <div className="flex items-center space-x-2">
                         <MapPin className="w-5 h-5 text-emerald-600" />
                         <div>
-                          <p className="text-sm font-semibold text-gray-900">Ujjwala Academy</p>
+                          <p className="text-sm font-semibold text-gray-900">Ujjwala Global Academy</p>
                           <p className="text-xs text-gray-600">Kisan Path, Meesa Road, Noorpur Baheta, Gosaiganj, Lucknow - 226501</p>
                         </div>
                       </div>
@@ -507,7 +507,7 @@ const Contact = () => {
               Ready to Get Started?
             </h2>
             <p className="text-xl mb-8 text-emerald-100">
-              Join Ujjwala Academy and begin your educational journey today.
+              Join Ujjwala Global Academy and begin your educational journey today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold transition-colors duration-200">

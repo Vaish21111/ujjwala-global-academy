@@ -35,7 +35,7 @@ const Admissions = () => {
 
   useEffect(() => {
     // Initialize EmailJS with your public key
-    emailjs.init("VroDQNpLp9LP6vzXE"); // Replace with your actual EmailJS public key
+    emailjs.init("KPFBdqfnUlag-ZKY"); // Replace with your actual EmailJS public key
   }, []);
 
   const validateForm = () => {
@@ -107,8 +107,8 @@ const Admissions = () => {
 
       // Send email using EmailJS
       const response = await emailjs.send(
-        'service_6qa6ajv',
-        'template_aa00zxk',
+        'service_79ggywn',
+        'template_wvt2f8p',
         templateParams
       );
 
@@ -266,7 +266,7 @@ const Admissions = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto"
           >
-            Join Ujjwala Academy and begin your journey towards excellence
+            Join Ujjwala Global Academy and begin your journey towards excellence
           </motion.p>
         </div>
       </section>

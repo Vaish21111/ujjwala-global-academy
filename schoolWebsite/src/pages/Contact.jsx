@@ -71,17 +71,15 @@ const Contact = () => {
     try {
       // Send email directly using EmailJS
       const response = await emailjs.send(
-        'service_79ggywn', // Replace with your actual EmailJS service ID
-        'template_wvt2f8p', // Replace with your actual EmailJS template ID
-        {
-          to_email: 'ujjwalaglobalacademy@gmail.com',
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          reply_to: formData.email
-        }
-      );
+  'service_79ggywn',
+  'template_wvt2f8p',
+  {
+    name: formData.name,
+    email: formData.email,
+    message: formData.message,
+  },
+  'KPFBdqfnUlag-ZKY'
+);emailjs.send
 
       if (response.status === 200) {
         setSubmitStatus('success');

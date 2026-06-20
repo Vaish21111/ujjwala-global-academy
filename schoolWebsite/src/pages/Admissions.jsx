@@ -108,7 +108,7 @@ const Admissions = () => {
       // Send email using EmailJS
       const response = await emailjs.send(
         'service_2h0zn39',
-        'template_e9vlrfz',
+        'template_j6ioj5m',
         templateParams
       );
 

@@ -168,7 +168,7 @@ const CampusLife = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto"
           >
-            Experience the vibrant and enriching campus environment at Ujjwala Academy
+            Experience the vibrant and enriching campus environment at Ujjwala Global Academy
           </motion.p>
         </div>
       </section>
@@ -338,7 +338,7 @@ const CampusLife = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Photo Gallery</h2>
             </div>
             <p className="text-xl text-gray-600">
-              Glimpses of life at Ujjwala Academy
+              Glimpses of life at Ujjwala Global Academy
             </p>
           </motion.div>
 

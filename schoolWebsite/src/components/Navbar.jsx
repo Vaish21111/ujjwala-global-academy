@@ -104,7 +104,7 @@ const Navbar = () => {
             <Link to="/" className="flex items-center space-x-3">
               <img 
                 src="/logo_ujjwala.jpg" 
-                alt="Ujjwala Academy Logo" 
+                alt="Ujjwala Global Academy Logo" 
                 className="w-12 h-12 rounded-full object-cover shadow-md"
               />
               <span className="text-xl font-bold text-primary-800">Ujjwala Global Academy</span>

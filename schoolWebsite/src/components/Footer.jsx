@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { 
   School, 
   Phone, 
+  Linkedin,
   Mail, 
   MapPin, 
   Facebook, 
@@ -25,7 +26,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/share/16GZcUjk8E/', label: 'Facebook' },
-    // { icon: Twitter, href: '#', label: 'Twitter' },
+     { icon: Linkedin, href: 'https://www.linkedin.com/company/ujjwala-global-academy/', label: 'LinkedIn' },
     // { icon: Instagram, href: '#', label: 'Instagram' },
     // { icon: Youtube, href: '#', label: 'YouTube' }
   ];
@@ -44,7 +45,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-4">
               <img 
                 src="/logo_ujjwala.jpg" 
-                alt="Ujjwala Academy Logo" 
+                alt="Ujjwala Global Academy Logo" 
                 className="w-12 h-12 rounded-full object-cover shadow-md"
               />
               <span className="text-xl font-bold text-primary-400">Ujjwala Global Academy</span>
@@ -147,7 +148,7 @@ const Footer = () => {
           className="border-t border-gray-800 mt-8 pt-8 text-center"
         >
           <p className="text-gray-400">
-            © {currentYear} Ujjwala Academy. All rights reserved.
+            © {currentYear} Ujjwala Global Academy. All rights reserved.
           </p>
         </motion.div>
       </div>

@@ -427,7 +427,7 @@ useEffect(() => {
               Latest News & Events
             </h2>
             <p className="text-xl text-gray-600">
-              Stay updated with what's happening at Ujjwala Academy
+              Stay updated with what's happening at Ujjwala Global Academy
             </p>
           </motion.div>
 

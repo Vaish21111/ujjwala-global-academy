@@ -521,26 +521,20 @@ useEffect(() => {
       </p>
     </div>
 
-    <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
-      <iframe
-        title="Ujjwala Global Academy Location"
-        src="https://maps.app.goo.gl/CqBjDDwWk6YfZD7D9"
-        width="100%"
-        height="450"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-      ></iframe><iframe
-  title="Ujjwala Global Academy Location"
-  src="https://maps.app.goo.gl/CqBjDDwWk6YfZD7D9"
-  width="100%"
-  height="500"
-  style={{ border: 0 }}
-  loading="lazy"
-  allowFullScreen
-/>
+    
+      <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+  <iframe
+    title="Ujjwala Global Academy Location"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.6480121316504!2d81.07759897563882!3d26.81933416409682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be1d42dcc663d%3A0x1f77b89f64f7203c!2sUjjwala%20Global%20Academy!5e0!3m2!1sen!2sin!4v1782394444228!5m2!1sen!2sin"
+    width="100%"
+    height="450"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="strict-origin-when-cross-origin"
+  />
+</div>
     </div>
-  </div>
 </section>
       {/* Compact Fun Fact Generator */}
       {showFunFact && (

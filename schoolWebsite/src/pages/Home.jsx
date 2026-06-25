@@ -524,7 +524,7 @@ useEffect(() => {
     <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
       <iframe
         title="Ujjwala Global Academy Location"
-        src="https://maps.google.com/maps?q=Kisan%20Path%20Meesa%20Road%20Noorpur%20Baheta%20Lucknow&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        src="https://maps.app.goo.gl/CqBjDDwWk6YfZD7D9"
         width="100%"
         height="450"
         style={{ border: 0 }}
@@ -532,7 +532,7 @@ useEffect(() => {
         loading="lazy"
       ></iframe><iframe
   title="Ujjwala Global Academy Location"
-  src="https://maps.google.com/maps?q=Ujjwala%20Global%20Academy%20Gosainganj%20Lucknow&t=&z=17&ie=UTF8&iwloc=&output=embed"
+  src="https://maps.app.goo.gl/CqBjDDwWk6YfZD7D9"
   width="100%"
   height="500"
   style={{ border: 0 }}

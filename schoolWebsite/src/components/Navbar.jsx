@@ -184,7 +184,15 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
+        {/* Recruitment Warning */}
+      <div className="bg-red-700 text-white overflow-hidden py-2">
+        <div className="warning-marquee">
+          <div className="warning-marquee-content">
+            🚨 IMPORTANT RECRUITMENT NOTICE: Some fraudulent websites are falsely advertising job vacancies in the name of Ujjwala Global Academy. The school DOES NOT recruit through third-party job portals. Apply ONLY through our official website www.ujjwalaglobalacademy.com or contact our official school phone number. Never pay any recruitment fee or share your personal information with unauthorized websites.
+          </div>
+        </div>
+      </div>
+  
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
@@ -226,6 +234,8 @@ const Navbar = () => {
                 </div>
               ))}
             </div>
+
+
           </motion.div>
         )}
       </AnimatePresence>

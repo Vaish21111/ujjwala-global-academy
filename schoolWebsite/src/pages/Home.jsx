@@ -29,14 +29,14 @@ const heroSlides = [
     ctaPath: '/admissions',
   },
   {
-    image: '/classroom.jpg',
+    image: '/IMG-20240815-WA0179 (1).jpg',
     title: 'Excellence in Every Classroom',
     subtitle: 'Modern infrastructure • Expert faculty • Holistic education',
     cta: 'Explore Academics',
     ctaPath: '/academics',
   },
   {
-    image: '/sports.jpeg',
+    image: '/Untitled design (42).png',
     title: 'Beyond Academics',
     subtitle: 'Sports, arts, clubs & events that shape well-rounded personalities',
     cta: 'See Campus Life',

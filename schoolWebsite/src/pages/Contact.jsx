@@ -142,10 +142,19 @@ const Contact = () => {
   ];
 
   return (
-    <div className="pt-16">
+    <div>
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-24 bg-gradient-to-br from-emerald-700 via-emerald-600 to-emerald-800 text-white overflow-hidden">
+        <div className="absolute -top-20 -right-20 w-80 h-80 bg-white/5 rounded-full" />
+        <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-white/5 rounded-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-block bg-white/15 border border-white/25 rounded-full px-5 py-1.5 text-sm font-medium mb-6"
+          >
+            📞 We'd Love to Hear from You
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -169,38 +178,33 @@ const Contact = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Get in Touch
-            </h2>
-            <p className="text-xl text-gray-600">
-              Reach out to us through any of these channels
-            </p>
+            <span className="inline-block bg-emerald-50 text-emerald-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-3">
+              Contact Info
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Get in Touch</h2>
+            <p className="text-gray-500 text-lg">Reach out to us through any of these channels</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={info.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center hover:shadow-lg transition-all duration-300"
               >
-                <div className={`w-16 h-16 ${info.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                  <info.icon className="w-8 h-8" />
+                <div className={`w-14 h-14 ${info.color} rounded-xl flex items-center justify-center mx-auto mb-4`}>
+                  <info.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {info.title}
-                </h3>
-                <p className="text-gray-600">
-                  {info.details}
-                </p>
+                <h3 className="font-bold text-gray-900 mb-2">{info.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{info.details}</p>
               </motion.div>
             ))}
           </div>
@@ -210,22 +214,22 @@ const Contact = () => {
       {/* Contact Form and Map Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.7 }}
             >
-              <div className="bg-white rounded-xl shadow-lg p-8">
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                    <MessageSquare className="w-6 h-6 text-emerald-600" />
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center">
+                    <MessageSquare className="w-5 h-5 text-emerald-600" />
                   </div>
                   <h2 className="text-2xl font-bold text-gray-900">Send us a Message</h2>
                 </div>
-                <p className="text-gray-600 mb-6">
-                  Have a question or want to learn more about Ujjwala Global Academy? Send us a message and we'll get back to you as soon as possible.
+                <p className="text-gray-500 text-sm mb-6 ml-13">
+                  Have a question? We'll get back to you as soon as possible.
                 </p>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -357,80 +361,44 @@ const Contact = () => {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-8"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="space-y-6"
             >
-              {/* Interactive Map */}
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div className="h-80 bg-gray-100 p-4">
-                  <div className="w-full h-full rounded-lg overflow-hidden shadow-inner relative">
-                                         {/* OpenStreetMap with custom pin */}
-                     {/* 
-                       ✅ Coordinates Updated: 26.819530446791813, 81.0801202512669
-                       Location: Kisan Path, Meesa Road, Noorpur Baheta, Gosaiganj, Lucknow
-                       Map centered around Ujjwala Global Academy with custom pin overlay
-                     */}
-                     <iframe
-                       src="https://www.openstreetmap.org/export/embed.html?bbox=80.9801202512669,26.719530446791813,81.1801202512669,26.919530446791813&layer=mapnik&marker=26.819530446791813,81.0801202512669"
-                       width="100%"
-                       height="100%"
-                       style={{ border: 0 }}
-                       allowFullScreen=""
-                       loading="lazy"
-                       title="Ujjwala Global Academy Location"
-                       className="rounded-lg"
-                     />
-                    
-                    {/* Custom Pin Overlay */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-                      <div className="relative">
-                        {/* Pin */}
-                        <div className="w-8 h-8 bg-emerald-600 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
-                          <div className="w-2 h-2 bg-white rounded-full"></div>
-                        </div>
-                        {/* Pin tail */}
-                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-emerald-600"></div>
-                      </div>
-                    </div>
-                    
-                    {/* Location label */}
-                    <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
-                      <div className="flex items-center space-x-2">
-                        <MapPin className="w-5 h-5 text-emerald-600" />
-                        <div>
-                          <p className="text-sm font-semibold text-gray-900">Ujjwala Global Academy</p>
-                          <p className="text-xs text-gray-600">Kisan Path, Meesa Road, Noorpur Baheta, Gosaiganj, Lucknow - 226501</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              {/* Google Map */}
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <iframe
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=80.9801202512669,26.719530446791813,81.1801202512669,26.919530446791813&layer=mapnik&marker=26.819530446791813,81.0801202512669"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  title="Ujjwala Global Academy Location"
+                />
+                <div className="p-4 flex items-center gap-2 border-t border-gray-100">
+                  <MapPin className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <p className="text-sm text-gray-600">Kisan Path, Meesa Road, Noorpur Baheta, Gosaiganj, Lucknow – 226501</p>
                 </div>
               </div>
 
               {/* Department Contacts */}
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Department Contacts</h3>
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-5">Quick Contact</h3>
                 <div className="space-y-4">
                   {departments.map((dept, index) => (
-                    <motion.div
-                      key={dept.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="border-b border-gray-200 pb-4 last:border-b-0"
-                    >
-                      <h4 className="font-semibold text-gray-900 mb-2">{dept.name}</h4>
-                      <div className="space-y-1 text-sm text-gray-600">
-                        <div className="flex items-center space-x-2">
-                          <Mail className="w-4 h-4" />
-                          <span>{dept.email}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Phone className="w-4 h-4" />
-                          <span>{dept.phone}</span>
-                        </div>
+                    <div key={dept.name} className="bg-emerald-50 rounded-xl p-4">
+                      <h4 className="font-bold text-emerald-800 mb-2">{dept.name}</h4>
+                      <div className="space-y-1.5 text-sm text-gray-600">
+                        <a href={`mailto:${dept.email}`} className="flex items-center gap-2 hover:text-emerald-700 transition-colors">
+                          <Mail className="w-3.5 h-3.5 text-emerald-500" />
+                          {dept.email}
+                        </a>
+                        <a href={`tel:${dept.phone}`} className="flex items-center gap-2 hover:text-emerald-700 transition-colors">
+                          <Phone className="w-3.5 h-3.5 text-emerald-500" />
+                          {dept.phone}
+                        </a>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -443,20 +411,23 @@ const Contact = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <span className="inline-block bg-emerald-50 text-emerald-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-3">
+              FAQs
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-gray-500 text-lg">
               Find answers to common questions about our school
             </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {[
               {
                 question: "What are the admission requirements?",
@@ -479,15 +450,14 @@ const Contact = () => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gray-50 rounded-lg p-6"
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="bg-gray-50 rounded-2xl border border-gray-100 p-6 hover:border-emerald-200 hover:bg-emerald-50/30 transition-all duration-200"
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="font-bold text-gray-900 mb-2 flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold mt-0.5">Q.</span>
                   {faq.question}
                 </h3>
-                <p className="text-gray-600">
-                  {faq.answer}
-                </p>
+                <p className="text-gray-600 text-sm leading-relaxed ml-6">{faq.answer}</p>
               </motion.div>
             ))}
           </div>

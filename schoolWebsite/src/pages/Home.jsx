@@ -1,337 +1,332 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { 
-  ArrowRight, 
-  Users, 
-  Award, 
-  BookOpen, 
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  ArrowRight,
+  Users,
+  Award,
+  BookOpen,
   Calendar,
   MapPin,
   Phone,
   Mail,
   ChevronRight,
-  Play
+  ChevronLeft,
+  Star,
+  Shield,
+  Zap,
+  Heart,
+  GraduationCap,
 } from 'lucide-react';
 
-
-const Home = () => {
-  const localImages = [
-    '/WhatsApp Image 2025-08-19 at 8.18.24 PM.jpeg',
-    '/WhatsApp Image 2025-08-19 at 8.18.29 PM.jpeg',
-    '/WhatsApp Image 2025-08-19 at 8.18.32 PM.jpeg',
-    '/WhatsApp Image 2025-08-19 at 8.18.56 PM.jpeg',
-    '/WhatsApp Image 2025-08-19 at 8.18.57 PM.jpeg',
-    '/WhatsApp Image 2025-08-19 at 8.18.58 PM.jpeg',
-    '/WhatsApp Image 2025-08-19 at 8.32.24 PM.jpeg',
-    '/WhatsApp Image 2025-08-19 at 8.32.25 PM.jpeg'
-  ];
-  
-  const [counts, setCounts] = useState({
-    students: 0,
-    teachers: 0,
-    awards: 0,
-    years: 0
-  });
-const facts = [
-  "Reading for 20 minutes daily improves vocabulary and comprehension.",
-  "Education is the passport to the future.",
-  "Curiosity is the first step toward learning.",
-  "Sports help students develop teamwork and leadership.",
-  "Every child has unique talents waiting to be discovered.",
-  "Small daily efforts lead to big achievements.",
-  "Learning never stops, even outside the classroom.",
-  "Good habits built in school last a lifetime.",
-  "Creativity and knowledge go hand in hand.",
-  "Success begins with consistent practice."
+/* ─── Hero slides ─── */
+const heroSlides = [
+  {
+    image: '/IMG_5897.JPG.jpeg',
+    title: 'Ujjwala Global Academy',
+    subtitle: 'Empowering Young Minds from Nursery to Class XII',
+    cta: 'Apply for Admission',
+    ctaPath: '/admissions',
+  },
+  {
+    image: '/classroom.jpg',
+    title: 'Excellence in Every Classroom',
+    subtitle: 'Modern infrastructure • Expert faculty • Holistic education',
+    cta: 'Explore Academics',
+    ctaPath: '/academics',
+  },
+  {
+    image: '/sports.jpeg',
+    title: 'Beyond Academics',
+    subtitle: 'Sports, arts, clubs & events that shape well-rounded personalities',
+    cta: 'See Campus Life',
+    ctaPath: '/campus-life',
+  },
 ];
 
-const [factIndex, setFactIndex] = useState(0);
-const [showFunFact, setShowFunFact] = useState(true);
-const scrollTimeoutRef = useRef(null);
+/* ─── Stats ─── */
+const statsTargets = { students: 300, teachers: 20, awards: 5, years: 6 };
 
-const { scrollY } = useScroll();
-const y = useTransform(scrollY, [0, 300], [0, 100]);
-const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-useEffect(() => {
-  const interval = setInterval(() => {
-    setFactIndex((prev) => (prev + 1) % facts.length);
-  }, 5000);
+/* ─── Why Choose Us ─── */
+const features = [
+  {
+    icon: Award,
+    title: 'Academic Excellence',
+    description: '98% pass rate with a focus on comprehensive, concept-based learning.',
+    color: 'bg-amber-50 text-amber-600',
+  },
+  {
+    icon: Heart,
+    title: 'Holistic Education',
+    description: 'Nurturing minds, values, and character for total student development.',
+    color: 'bg-rose-50 text-rose-600',
+  },
+  {
+    icon: Zap,
+    title: 'Modern Facilities',
+    description: 'Computer lab, CCTV-monitored campus, and state-of-the-art classrooms.',
+    color: 'bg-blue-50 text-blue-600',
+  },
+  {
+    icon: Users,
+    title: 'Co-curricular Activities',
+    description: 'Art, science club, dance, drama, music, and public speaking for every student.',
+    color: 'bg-purple-50 text-purple-600',
+  },
+  {
+    icon: Shield,
+    title: 'Safe Environment',
+    description: "CCTV-monitored campus ensuring every child's safety at all times.",
+    color: 'bg-emerald-50 text-emerald-600',
+  },
+  {
+    icon: GraduationCap,
+    title: 'BSB Affiliated',
+    description: 'Affiliated by the National Board of Education (BSB) for quality assurance.',
+    color: 'bg-orange-50 text-orange-600',
+  },
+];
 
-  return () => clearInterval(interval);
-}, []);
+/* ─── Quick access ─── */
+const quickAccess = [
+  { emoji: '🏛️', title: 'About Us', desc: 'History, vision & leadership', path: '/about', bg: 'from-blue-500 to-blue-600' },
+  { emoji: '📚', title: 'Academics', desc: 'Curriculum & exam schedule', path: '/academics', bg: 'from-emerald-500 to-emerald-600' },
+  { emoji: '🏫', title: 'Campus Life', desc: 'Facilities, events & gallery', path: '/campus-life', bg: 'from-purple-500 to-purple-600' },
+  { emoji: '📝', title: 'Admissions', desc: 'Fees & application form', path: '/admissions', bg: 'from-orange-500 to-orange-600' },
+];
+
+/* ─── Latest notices ─── */
+const notices = [
+  'Admissions Open 2025–26 for all classes Nursery to XII — Apply Now!',
+  'Annual Function scheduled — watch the school calendar for date updates.',
+  'Mid-Term Examinations: September 15–30. Download the admit card from the office.',
+  'Transportation service available across Gosaiganj and nearby areas.',
+];
+
+const Home = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [counts, setCounts] = useState({ students: 0, teachers: 0, awards: 0, years: 0 });
+  const statsRef = useRef(null);
+  const statsAnimated = useRef(false);
+
+  /* Auto-advance hero */
   useEffect(() => {
-    const animateCounts = () => {
-      const targets = { students: 300, teachers: 20, awards: 5, years: 6 };
-      const duration = 2000;
-      const steps = 60;
-      const stepDuration = duration / steps;
+    const t = setInterval(() => setSlideIndex((p) => (p + 1) % heroSlides.length), 5000);
+    return () => clearInterval(t);
+  }, []);
 
-      let current = { students: 0, teachers: 0, awards: 0, years: 0 };
-
-      const timer = setInterval(() => {
-        Object.keys(targets).forEach(key => {
-          const target = targets[key];
-          const increment = target / steps;
-          current[key] = Math.min(current[key] + increment, target);
-        });
-
-        setCounts({
-          students: Math.floor(current.students),
-          teachers: Math.floor(current.teachers),
-          awards: Math.floor(current.awards),
-          years: Math.floor(current.years)
-        });
-
-        if (current.students >= targets.students) {
-          clearInterval(timer);
+  /* Count-up animation */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !statsAnimated.current) {
+          statsAnimated.current = true;
+          const steps = 60;
+          const duration = 2000;
+          let step = 0;
+          const timer = setInterval(() => {
+            step++;
+            const progress = step / steps;
+            setCounts({
+              students: Math.floor(statsTargets.students * progress),
+              teachers: Math.floor(statsTargets.teachers * progress),
+              awards: Math.floor(statsTargets.awards * progress),
+              years: Math.floor(statsTargets.years * progress),
+            });
+            if (step >= steps) {
+              clearInterval(timer);
+              setCounts(statsTargets);
+            }
+          }, duration / steps);
         }
-      }, stepDuration);
-
-      return () => clearInterval(timer);
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounts();
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-
-    const statsSection = document.getElementById('stats-section');
-    if (statsSection) {
-      observer.observe(statsSection);
-    }
-
+      },
+      { threshold: 0.4 }
+    );
+    if (statsRef.current) observer.observe(statsRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const quickAccessItems = [
-    {
-      icon: '🏛️',
-      title: 'About Us',
-      description: 'Our history and mission',
-      path: '/about',
-      color: 'bg-blue-500'
-    },
-    {
-      icon: '📅',
-      title: 'Curriculum',
-      description: 'Course Plan',
-      path: '/academics',
-      color: 'bg-green-500'
-    },
-    {
-      icon: '🏫',
-      title: 'Facilities',
-      description: 'Modern infrastructure',
-      path: '/campus-life',
-      color: 'bg-purple-500'
-    },
-    // {
-    //   icon: '🎓',
-    //   title: 'Alumni',
-    //   description: 'Our proud graduates',
-    //   path: '/about',
-    //   color: 'bg-orange-500'
-    // },
-    {
-      icon: '📞',
-      title: 'Contact',
-      description: 'Get in touch',
-      path: '/contact',
-      color: 'bg-red-500'
-    }
-  ];
+  const slide = heroSlides[slideIndex];
 
-  const features = [
-    {
-      icon: Award,
-      title: 'Academic Excellence',
-      description: 'Consistently achieving outstanding results with a focus on comprehensive learning and skill development.'
-    },
-    {
-      icon: Users,
-      title: 'Holistic Education',
-      description: 'We focus on the integral development and total formation of our students, nurturing their minds, values, and character.'
-    },
-    {
-      icon: BookOpen,
-      title: 'Modern Facilities',
-      description: 'State-of-the-art infrastructure including computer lab, auditorium, library, and CCTV monitoring for student safety.'
-    },
-    {
-      icon: Calendar,
-      title: 'Co-curricular Activities',
-      description: 'Diverse activities including art, science club, dance, drama, music, and public speaking to develop well-rounded personalities.'
-    }
-  ];
-
-  
   return (
-    <div className="pt-16">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div
-          style={{ y, opacity }}
-          className="absolute inset-0 bg-gradient-to-r from-emerald-900/85 to-emerald-800/90"
-        />
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(/IMG_5897.JPG.jpeg)`
-          }}
-        />
-        <div className="absolute inset-0 bg-black/50"></div>
-        
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-6"
-          >
-            Ujjwala Global Academy
-          </motion.h1>
-          
-          {/* Fun Fact Generator - Moved to bottom right corner */}
-          
-          <div className="mb-8">
-  <motion.p
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-    className="text-xl md:text-2xl text-emerald-100 font-medium"
-  >
-    Empowering Young Minds from Nursery to Class XII
-  </motion.p>
-
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.3 }}
-    className="mt-4 inline-block bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2"
-  >
-    <span className="text-white font-semibold">
-      Affiliated by National Board of Education (BSB)
-    </span>
-  </motion.div>
-
-  <motion.p
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.4 }}
-    className="mt-4 text-lg text-emerald-100"
-  >
-    Academic Excellence • Character Building • Future Readiness
-  </motion.p>
-</div>
-          
+    <div>
+      {/* ── HERO ── */}
+      <section className="relative h-[92vh] min-h-[560px] flex items-center justify-center overflow-hidden">
+        <AnimatePresence mode="wait">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            key={slideIndex}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9 }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${slide.image})` }}
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+
+        {/* Content */}
+        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.7 }}
+            className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-5 py-1.5 text-sm font-medium mb-6"
+          >
+            <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+            <span>Affiliated by National Board of Education (BSB)</span>
+          </motion.div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slideIndex}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.7 }}
+            >
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight drop-shadow-lg">
+                {slide.title}
+              </h1>
+              <p className="text-lg md:text-2xl text-white/85 mb-8 max-w-2xl mx-auto">
+                {slide.subtitle}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link
-              to="/admissions"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-semibold transition-colors duration-200 flex items-center justify-center space-x-2"
+              to={slide.ctaPath}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-emerald-500/40 flex items-center justify-center gap-2"
             >
-              <span>Apply Now</span>
-              <ArrowRight className="w-5 h-5" />
+              {slide.cta} <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               to="/about"
-              className="bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-full font-semibold transition-colors duration-200 backdrop-blur-sm"
+              className="bg-white/20 hover:bg-white/30 text-white border border-white/30 px-8 py-3.5 rounded-full font-semibold transition-all backdrop-blur-sm"
             >
               Learn More
             </Link>
           </motion.div>
-        
 
-<motion.div
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 0.6 }}
-  className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
->
-  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4">
-    <div className="text-2xl mb-2">🏫</div>
-    <div className="text-sm font-semibold">Nursery - XII</div>
-  </div>
+          {/* Stats mini bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto"
+          >
+            {[
+              { emoji: '🏫', label: 'Nursery – XII' },
+              { emoji: '📚', label: 'BSB Affiliated' },
+              { emoji: '👩‍🏫', label: 'Expert Faculty' },
+              { emoji: '🎯', label: 'Holistic Growth' },
+            ].map((b) => (
+              <div key={b.label} className="bg-white/10 backdrop-blur-md rounded-xl p-3 text-sm font-medium">
+                <div className="text-xl mb-1">{b.emoji}</div>
+                {b.label}
+              </div>
+            ))}
+          </motion.div>
+        </div>
 
-  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4">
-    <div className="text-2xl mb-2">📚</div>
-    <div className="text-sm font-semibold">BSB Affiliated</div>
-  </div>
+        {/* Slide controls */}
+        <button
+          onClick={() => setSlideIndex((p) => (p - 1 + heroSlides.length) % heroSlides.length)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-2 rounded-full transition-all"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={() => setSlideIndex((p) => (p + 1) % heroSlides.length)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-2 rounded-full transition-all"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
 
-  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4">
-    <div className="text-2xl mb-2">👩‍🏫</div>
-    <div className="text-sm font-semibold">Expert Faculty</div>
-  </div>
+        {/* Slide dots */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setSlideIndex(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === slideIndex ? 'w-6 h-2.5 bg-white' : 'w-2.5 h-2.5 bg-white/50'
+              }`}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      </section>
 
-  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4">
-    <div className="text-2xl mb-2">🎯</div>
-    <div className="text-sm font-semibold">Holistic Development</div>
-  </div>
-</motion.div>
+      {/* ── FRAUD WARNING MARQUEE ── */}
+      <div className="bg-red-700 text-white overflow-hidden py-2.5">
+        <div className="warning-marquee">
+          <div className="warning-marquee-content text-sm font-semibold">
+            🚨 IMPORTANT NOTICE: Some fraudulent websites falsely advertise job vacancies in the name of Ujjwala Global Academy. The school does NOT recruit through third-party portals. Apply ONLY via our official website or phone number. Never pay any recruitment fee.
+          </div>
+        </div>
+      </div>
 
-</div>
-</section>
-        {/* Recruitment Warning */}
-<div className="bg-red-700 text-white overflow-hidden py-2">
-  <div className="warning-marquee">
-    <div className="warning-marquee-content">
-      🚨 IMPORTANT RECRUITMENT NOTICE: Some fraudulent websites are falsely advertising job vacancies in the name of Ujjwala Global Academy. The school DOES NOT recruit through third-party job portals. Apply ONLY through our official website www.ujjwalaglobalacademy.com or contact our official school phone number. Never pay any recruitment fee or share your personal information with unauthorized websites.
-    </div>
-  </div>
-</div>
-      
+      {/* ── NOTICES TICKER ── */}
+      <div className="bg-amber-50 border-y border-amber-200 py-3">
+        <div className="max-w-7xl mx-auto px-4 flex items-center gap-4">
+          <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0">
+            📢 NOTICE
+          </span>
+          <div className="overflow-hidden flex-1">
+            <div className="notice-ticker flex gap-12">
+              {[...notices, ...notices].map((n, i) => (
+                <span key={i} className="text-sm text-gray-700 whitespace-nowrap">
+                  • {n}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
 
-      {/* Quick Access Section */}
-      <section className="py-16 bg-gray-50">
+      {/* ── QUICK ACCESS ── */}
+      <section className="py-14 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Quick Access
-            </h2>
-            <p className="text-xl text-gray-600">
-              Everything you need, just one click away
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Quick Access</h2>
+            <p className="text-gray-500">Everything you need, just one click away</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {quickAccessItems.map((item, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {quickAccess.map((item, i) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300"
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                whileHover={{ y: -6 }}
               >
-                <div className={`w-16 h-16  rounded-full flex items-center justify-center text-2xl mx-auto mb-4`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {item.description}
-                </p>
                 <Link
                   to={item.path}
-                  className="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium"
+                  className="block bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 text-center border border-gray-100 group"
                 >
-                  Learn More
-                  <ChevronRight className="w-4 h-4 ml-1" />
+                  <div className={`w-14 h-14 bg-gradient-to-br ${item.bg} rounded-xl flex items-center justify-center text-2xl mx-auto mb-3 shadow-sm group-hover:scale-110 transition-transform`}>
+                    {item.emoji}
+                  </div>
+                  <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
+                  <p className="text-xs text-gray-500">{item.desc}</p>
+                  <div className="mt-3 flex items-center justify-center gap-1 text-emerald-600 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    Explore <ChevronRight className="w-3 h-3" />
+                  </div>
                 </Link>
               </motion.div>
             ))}
@@ -339,7 +334,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* ── WHY CHOOSE US ── */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -348,270 +343,181 @@ useEffect(() => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <span className="inline-block bg-emerald-50 text-emerald-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-3">
+              Why Ujjwala?
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Why Choose Ujjwala Global Academy?
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {features.map((feature, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((f, i) => (
               <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex space-x-4"
+                key={f.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                whileHover={{ y: -4 }}
+                className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex-shrink-0">
-                                  <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                  <feature.icon className="w-6 h-6 text-emerald-600" />
+                <div className={`w-12 h-12 ${f.color} rounded-xl flex items-center justify-center mb-4`}>
+                  <f.icon className="w-6 h-6" />
                 </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
-                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{f.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{f.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Statistics Section */}
-      <section id="stats-section" className="py-16 bg-emerald-600 text-white">
+      {/* ── STATS ── */}
+      <section
+        ref={statsRef}
+        className="py-16 bg-gradient-to-r from-emerald-700 to-emerald-600 text-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold">Our Institution at a Glance</h2>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="text-4xl md:text-5xl font-bold mb-2">{counts.students}+</div>
-              <div className="text-emerald-100">Students Enrolled</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <div className="text-4xl md:text-5xl font-bold mb-2">{counts.teachers}+</div>
-              <div className="text-emerald-100">Expert Teachers</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="text-4xl md:text-5xl font-bold mb-2">{counts.awards}+</div>
-              <div className="text-emerald-100">Awards Won</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <div className="text-4xl md:text-5xl font-bold mb-2">{counts.years}+</div>
-              <div className="text-emerald-100">Years of Excellence</div>
-            </motion.div>
+            {[
+              { value: counts.students, suffix: '+', label: 'Students Enrolled', icon: '👨‍🎓' },
+              { value: counts.teachers, suffix: '+', label: 'Expert Teachers', icon: '👩‍🏫' },
+              { value: counts.awards, suffix: '+', label: 'Awards Won', icon: '🏆' },
+              { value: counts.years, suffix: '+', label: 'Years of Excellence', icon: '⭐' },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.7 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <div className="text-3xl mb-2">{stat.icon}</div>
+                <div className="text-4xl md:text-5xl font-extrabold mb-1">
+                  {stat.value}{stat.suffix}
+                </div>
+                <div className="text-emerald-100 font-medium">{stat.label}</div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* News & Events Section */}
-      {/* <section className="py-16 bg-gray-50">
+      {/* ── GLIMPSE OF CAMPUS ── */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Latest News & Events
-            </h2>
-            <p className="text-xl text-gray-600">
-              Stay updated with what's happening at Ujjwala Global Academy
+            <span className="inline-block bg-emerald-50 text-emerald-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-3">
+              Gallery
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Glimpse of Campus Life</h2>
+            <p className="text-gray-500">A sneak peek into life at Ujjwala Global Academy</p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {['/classroom.jpg', '/computerlab.jpeg', '/sports.jpeg', '/art.jpeg', '/awardceremony.jpeg', '/fancyDress.jpeg', '/annualFunction.jpeg', '/swing.jpeg'].map(
+              (img, i) => (
+                <motion.div
+                  key={img}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: i * 0.06 }}
+                  className="relative group overflow-hidden rounded-xl aspect-square"
+                >
+                  <img src={img} alt={`Campus ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+                </motion.div>
+              )
+            )}
+          </div>
+
+          <div className="text-center mt-8">
+            <Link
+              to="/campus-life#gallery"
+              className="inline-flex items-center gap-2 border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-600 hover:text-white px-6 py-2.5 rounded-full font-semibold transition-all"
+            >
+              View Full Gallery <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-3xl p-10 text-white shadow-xl"
+          >
+            <div className="text-5xl mb-4">🎓</div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">Begin Your Child's Journey</h2>
+            <p className="text-emerald-100 text-lg mb-8 max-w-xl mx-auto">
+              Admissions open for 2025–26. Take the first step towards a world-class education.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/admissions"
+                className="bg-white text-emerald-700 hover:bg-emerald-50 px-8 py-3.5 rounded-full font-bold transition-colors flex items-center justify-center gap-2"
+              >
+                Apply Now <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                to="/contact"
+                className="border-2 border-white/50 hover:border-white text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
+              >
+                Contact Admissions
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── MAP ── */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Visit Our Campus</h2>
+            <p className="text-gray-500 flex items-center justify-center gap-2">
+              <MapPin className="w-4 h-4 text-emerald-600" />
+              Kisan Path, Meesa Road, Noorpur Baheta, Gosain Ganj, Lucknow – 226501
             </p>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {newsEvents.map((event, index) => (
-              <motion.div
-                key={event.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
-              >
-                <div className="h-48 bg-gray-200 relative overflow-hidden">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="text-sm text-emerald-600 font-medium mb-2">
-                    {event.date}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {event.title}
-                  </h3>
-                  <p className="text-lg font-medium text-gray-700 mb-2">
-                    {event.description}
-                  </p>
-                  <p className="text-gray-600">
-                    {event.content}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+            <iframe
+              title="Ujjwala Global Academy Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.6480121316504!2d81.07759897563882!3d26.81933416409682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be1d42dcc663d%3A0x1f77b89f64f7203c!2sUjjwala%20Global%20Academy!5e0!3m2!1sen!2sin!4v1782394444228!5m2!1sen!2sin"
+              width="100%"
+              height="420"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
           </div>
-        </div>
-      </section> */}
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
-          >
-            Begin Your Journey
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xl mb-8 "
-          >
-            Take the first step towards excellence in education.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Link
-              to="/admissions"
-              className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold transition-colors duration-200 inline-flex items-center space-x-2"
-            >
-              <span>Apply Now</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </motion.div>
+          <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+            <a href="tel:+919451690636" className="flex items-center gap-2 hover:text-emerald-700 transition-colors">
+              <Phone className="w-4 h-4 text-emerald-600" /> +91 9451690636
+            </a>
+            <a href="mailto:ujjwalaglobalacademy@gmail.com" className="flex items-center gap-2 hover:text-emerald-700 transition-colors">
+              <Mail className="w-4 h-4 text-emerald-600" /> ujjwalaglobalacademy@gmail.com
+            </a>
+          </div>
         </div>
       </section>
-      {/* Location Map Section */}
-<section className="py-16 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-10">
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        Visit Our Campus
-      </h2>
-      <p className="text-lg text-gray-600">
-        Kisan Path, Meesa Road, Noorpur Baheta, Gosain Ganj, Lucknow
-      </p>
-    </div>
-
-    
-      <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
-  <iframe
-    title="Ujjwala Global Academy Location"
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.6480121316504!2d81.07759897563882!3d26.81933416409682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be1d42dcc663d%3A0x1f77b89f64f7203c!2sUjjwala%20Global%20Academy!5e0!3m2!1sen!2sin!4v1782394444228!5m2!1sen!2sin"
-    width="100%"
-    height="450"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="strict-origin-when-cross-origin"
-  />
-</div>
-    </div>
-</section>
-      {/* Compact Fun Fact Generator */}
-      {showFunFact && (
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.5 }}
-          className="fixed bottom-6 right-6 z-50 w-64 shadow-md"
-        >
-          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden relative">
-            {/* Header */}
-            <div className="bg-emerald-100 px-3 py-2 flex items-center justify-between border-b border-emerald-200">
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
-                  <svg 
-                    className="w-3 h-3 text-white" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    strokeWidth="2.5"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <span className="text-emerald-800 text-sm font-medium">Did you know?</span>
-              </div>
-              <div className="flex items-center gap-2">
-                {/* Mobile close button */}
-                <button
-                  className="md:hidden text-gray-400 hover:text-gray-700 p-1 rounded-full focus:outline-none"
-                  onClick={() => setShowFunFact(false)}
-                  aria-label="Close Fun Fact"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setFactIndex((prev) => (prev + 1) % facts.length)}
-            
-                  className="text-emerald-600 hover:text-emerald-800 p-1 rounded-full hover:bg-emerald-200/50 transition-colors"
-                  title="Get another fact"
-                >
-                  <svg 
-                    className="w-3 h-3"
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    strokeWidth="2.5"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" 
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            {/* Content */}
-            <div className="p-3 bg-white">
-  <motion.p
-    initial={{ opacity: 0, y: 5 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.2 }}
-    className="text-gray-700 text-xs leading-relaxed"
-  >
-    {facts[factIndex]}
-  </motion.p>
-</div>
-          </div>
-        </motion.div>
-      )}
     </div>
   );
 };

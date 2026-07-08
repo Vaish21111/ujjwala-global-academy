@@ -1,40 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  School, 
-  Phone, 
-  Linkedin,
-  Mail, 
-  MapPin, 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Youtube 
-} from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Linkedin, Clock, ArrowRight } from 'lucide-react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   const quickLinks = [
     { name: 'About Us', path: '/about' },
     { name: 'Academics', path: '/academics' },
     { name: 'Admissions', path: '/admissions' },
     { name: 'Campus Life', path: '/campus-life' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Contact Us', path: '/contact' },
   ];
 
-  const socialLinks = [
-    { icon: Facebook, href: 'https://www.facebook.com/share/16GZcUjk8E/', label: 'Facebook' },
-     { icon: Linkedin, href: 'https://www.linkedin.com/company/ujjwala-global-academy/', label: 'LinkedIn' },
-    // { icon: Instagram, href: '#', label: 'Instagram' },
-    // { icon: Youtube, href: '#', label: 'YouTube' }
+  const usefulLinks = [
+    { name: 'Curriculum Overview', path: '/academics#curriculum' },
+    { name: 'Fee Structure', path: '/admissions#fees' },
+    { name: 'Apply Now', path: '/admissions#apply' },
+    { name: 'Photo Gallery', path: '/campus-life#gallery' },
+    { name: 'Student Clubs', path: '/campus-life#clubs' },
   ];
 
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Top CTA stripe */}
+      <div className="bg-emerald-700 py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="font-bold text-lg">Admissions Open for 2025–26</p>
+            <p className="text-emerald-200 text-sm">Nursery to Class XII · BSB Affiliated</p>
+          </div>
+          <Link
+            to="/admissions#apply"
+            className="inline-flex items-center gap-2 bg-white text-emerald-700 hover:bg-emerald-50 px-6 py-2.5 rounded-full font-bold text-sm transition-colors flex-shrink-0"
+          >
+            Apply Now <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+
+      {/* Main footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* School Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -42,32 +50,40 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-1"
           >
-            <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/logo_ujjwala.jpg" 
-                alt="Ujjwala Global Academy Logo" 
-                className="w-12 h-12 rounded-full object-cover shadow-md"
+            <Link to="/" className="flex items-center gap-3 mb-4 group">
+              <img
+                src="/logo_ujjwala.jpg"
+                alt="Ujjwala Global Academy"
+                className="w-14 h-14 rounded-full object-cover border-2 border-emerald-600"
               />
-              <span className="text-xl font-bold text-primary-400">Ujjwala Global Academy</span>
-            </div>
-            <p className="text-gray-300 mb-4">
-              Excellence in Education with Higher Power - Nurturing minds, building character, and shaping futures.
+              <div>
+                <div className="font-bold text-white leading-tight">Ujjwala Global Academy</div>
+                <div className="text-xs text-gray-400">Excellence in Education</div>
+              </div>
+            </Link>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              Nurturing minds, building character, and shaping futures since 2020. Affiliated by the
+              National Board of Education (BSB).
             </p>
-            <div className="flex justify-center align-center">
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors duration-200"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5" />
-                </motion.a>
-              ))}
-            </div>
+            <div className="flex gap-3">
+              <a
+                href="https://www.facebook.com/share/16GZcUjk8E/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 bg-gray-800 hover:bg-emerald-600 rounded-full flex items-center justify-center transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/ujjwala-global-academy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 bg-gray-800 hover:bg-emerald-600 rounded-full flex items-center justify-center transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
             </div>
           </motion.div>
 
@@ -77,14 +93,37 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h3 className="text-lg font-semibold mb-4 text-center">Quick Links</h3>
-            <ul className="space-y-2 text-center">
+            <h3 className="font-bold text-white mb-5 text-sm uppercase tracking-wider">Quick Links</h3>
+            <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
+                    className="text-gray-400 hover:text-emerald-400 transition-colors text-sm flex items-center gap-2 group"
                   >
+                    <span className="w-1 h-1 bg-emerald-600 rounded-full group-hover:bg-emerald-400 transition-colors" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Useful Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h3 className="font-bold text-white mb-5 text-sm uppercase tracking-wider">Useful Links</h3>
+            <ul className="space-y-2.5">
+              {usefulLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-gray-400 hover:text-emerald-400 transition-colors text-sm flex items-center gap-2 group"
+                  >
+                    <span className="w-1 h-1 bg-emerald-600 rounded-full group-hover:bg-emerald-400 transition-colors" />
                     {link.name}
                   </Link>
                 </li>
@@ -96,61 +135,47 @@ const Footer = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-primary-400" />
-                <span className="text-gray-300">
-                Kisan Path, Meesa Road,Noorpur Baheta,Gosaiganj, Lucknow - 226501
+            <h3 className="font-bold text-white mb-5 text-sm uppercase tracking-wider">Contact Us</h3>
+            <div className="space-y-4">
+              <div className="flex gap-3">
+                <MapPin className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-400 text-sm leading-relaxed">
+                  Kisan Path, Meesa Road, Noorpur Baheta,<br />
+                  Gosaiganj, Lucknow – 226501
                 </span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-primary-400" />
-                <span className="text-gray-300">+91 9451690636</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-primary-400" />
-                <span className="text-gray-300">ujjwalaglobalacademy@gmail.com</span>
+              <a href="tel:+919451690636" className="flex gap-3 hover:text-emerald-400 transition-colors group">
+                <Phone className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                <span className="text-gray-400 group-hover:text-emerald-400 text-sm transition-colors">
+                  +91 9451690636
+                </span>
+              </a>
+              <a href="mailto:ujjwalaglobalacademy@gmail.com" className="flex gap-3 hover:text-emerald-400 transition-colors group">
+                <Mail className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                <span className="text-gray-400 group-hover:text-emerald-400 text-sm transition-colors">
+                  ujjwalaglobalacademy@gmail.com
+                </span>
+              </a>
+              <div className="flex gap-3">
+                <Clock className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                <span className="text-gray-400 text-sm">
+                  Mon–Fri: 8:00 AM – 4:00 PM<br />
+                  Sat: 9:00 AM – 1:00 PM
+                </span>
               </div>
             </div>
           </motion.div>
-
-          {/* Newsletter */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-            <p className="text-gray-300 mb-4">
-              Stay updated with our latest news and events.
-            </p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-md focus:outline-none focus:border-blue-500 text-white placeholder-gray-400"
-              />
-              <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-r-md transition-colors duration-200">
-                Subscribe
-              </button>
-            </div>
-          </motion.div> */}
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="border-t border-gray-800 mt-8 pt-8 text-center"
-        >
-          <p className="text-gray-400">
-            © {currentYear} Ujjwala Global Academy. All rights reserved.
-          </p>
-        </motion.div>
+      {/* Bottom bar */}
+      <div className="border-t border-gray-800 py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-gray-500">
+          <span>© {year} Ujjwala Global Academy. All rights reserved.</span>
+          <span>Gosaiganj, Lucknow, Uttar Pradesh</span>
+        </div>
       </div>
     </footer>
   );

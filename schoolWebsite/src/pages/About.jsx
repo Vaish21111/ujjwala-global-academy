@@ -2,24 +2,49 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  Clock,
-  Target,
-  Eye,
-  Users,
+  ArrowRight,
   Award,
   BookOpen,
-  MapPin,
-  Phone,
-  Mail,
-  ArrowRight,
   CheckCircle,
+  Eye,
+  Heart,
+  Lightbulb,
+  MapPin,
+  Mail,
+  Phone,
+  Sparkles,
+  Target,
+  Users,
 } from 'lucide-react';
 
 const coreValues = [
-  { icon: '🎓', title: 'Academic Excellence', desc: 'Highest standards in teaching and learning.' },
-  { icon: '💡', title: 'Innovation', desc: 'Modern methods and creative thinking in education.' },
-  { icon: '🤝', title: 'Integrity', desc: 'Honesty, transparency and ethical conduct.' },
-  { icon: '🌱', title: 'Holistic Growth', desc: 'Mind, body and character developed together.' },
+  {
+    icon: BookOpen,
+    title: 'Academic Excellence',
+    desc: 'Building strong foundations through meaningful and purposeful learning.',
+  },
+  {
+    icon: Heart,
+    title: 'Character & Integrity',
+    desc: 'Encouraging honesty, kindness, discipline and respect in everyday life.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Curiosity & Innovation',
+    desc: 'Creating an environment where students question, explore and create.',
+  },
+  {
+    icon: Users,
+    title: 'Holistic Development',
+    desc: 'Nurturing academic, emotional, social and creative growth together.',
+  },
+];
+
+const highlights = [
+  'Student-focused learning environment',
+  'Dedicated and supportive educators',
+  'Strong emphasis on values and character',
+  'Academic and co-curricular development',
 ];
 
 const About = () => {
@@ -28,341 +53,732 @@ const About = () => {
   const historyImg = '/IMG_5891.JPG.jpeg';
 
   return (
-    <div>
-      {/* ── HERO ── */}
-      <section className="relative py-24 bg-gradient-to-br from-emerald-700 via-emerald-600 to-emerald-800 text-white overflow-hidden">
-        {/* Decorative circles */}
-        <div className="absolute -top-20 -right-20 w-80 h-80 bg-white/5 rounded-full" />
-        <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-white/5 rounded-full" />
+    <div className="bg-[#f8f7f2] text-gray-900">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-5 py-1.5 text-sm font-medium mb-6"
-          >
-            Est. 2020 • Gosaiganj, Lucknow
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-4xl md:text-6xl font-bold mb-5"
-          >
-            About Ujjwala Global Academy
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-xl text-emerald-100 max-w-3xl mx-auto"
-          >
-            Nurturing minds, building character, and shaping futures since 2020
-          </motion.p>
-        </div>
-      </section>
+      {/* =====================================================
+          HERO
+      ====================================================== */}
+      <section className="relative overflow-hidden bg-[#f8f7f2] pt-16 pb-20 md:pt-24 md:pb-28">
 
-      {/* ── HISTORY ── */}
-      <section id="history" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        {/* Decorative shapes */}
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-emerald-100/60" />
+        <div className="absolute bottom-0 -left-32 w-72 h-72 rounded-full bg-[#d9b96e]/10" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            {/* Text */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-emerald-600" />
-                </div>
-                <h2 className="text-3xl font-bold text-gray-900">Our Story</h2>
+              <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded-full px-5 py-2 text-sm font-semibold mb-6">
+                <Sparkles className="w-4 h-4" />
+                ABOUT UJJWALA
               </div>
-              <p className="text-lg text-gray-600 mb-5 leading-relaxed">
-                Founded in 2020, Ujjwala Global Academy began with a vision to provide excellence in
-                education with higher power. What started as a small institution has grown into one of
-                the most respected schools in the Gosaiganj region of Lucknow.
-              </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Over the years we have consistently maintained high academic standards while fostering
-                a nurturing environment that encourages holistic development — earning the trust of
-                hundreds of families across the area.
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-gray-900">
+                Where Learning
+                <span className="block text-emerald-700">
+                  Meets Character.
+                </span>
+              </h1>
+
+              <p className="mt-7 text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
+                Ujjwala Global Academy is a learning community dedicated to
+                helping young minds discover their potential, build strong
+                character and grow into confident individuals.
               </p>
 
-              {/* Mini stats */}
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { value: '5+', label: 'Years of Excellence' },
-                  { value: '300+', label: 'Happy Students' },
-                  { value: '4+', label: 'Awards Won' },
-                ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="bg-emerald-50 rounded-xl p-4 text-center border border-emerald-100"
-                  >
-                    <div className="text-2xl font-extrabold text-emerald-700">{s.value}</div>
-                    <div className="text-xs text-gray-500 mt-1">{s.label}</div>
-                  </div>
-                ))}
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white px-7 py-3.5 rounded-full font-semibold transition-all shadow-lg shadow-emerald-700/20"
+                >
+                  Get in Touch
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                <a
+                  href="#our-story"
+                  className="inline-flex items-center gap-2 border border-gray-300 hover:border-emerald-600 text-gray-700 hover:text-emerald-700 px-7 py-3.5 rounded-full font-semibold transition-all bg-white"
+                >
+                  Explore Our Story
+                </a>
               </div>
             </motion.div>
 
+            {/* Image */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
               className="relative"
             >
+              <div className="absolute -top-5 -left-5 w-full h-full rounded-[2rem] border-2 border-[#d9b96e]/40" />
+
+              <div className="relative overflow-hidden rounded-[2rem] shadow-2xl">
+                <img
+                  src={historyImg}
+                  alt="Ujjwala Global Academy"
+                  className="w-full h-[420px] md:h-[520px] object-cover"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-xl">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center">
+                      <Award className="w-6 h-6" />
+                    </div>
+
+                    <div>
+                      <div className="text-2xl font-extrabold text-emerald-700">
+                        2020
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        Our journey began
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* =====================================================
+          OUR STORY
+      ====================================================== */}
+      <section id="our-story" className="bg-white py-20 md:py-24">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative"
+            >
+              <div className="absolute -bottom-5 -right-5 w-40 h-40 bg-[#d9b96e]/15 rounded-full" />
+
               <img
                 src={historyImg}
-                alt="School History"
-                className="rounded-2xl shadow-xl w-full object-cover"
+                alt="Ujjwala Global Academy campus"
+                className="relative z-10 rounded-[1.75rem] shadow-xl w-full h-[430px] object-cover"
               />
-              <div className="absolute -bottom-5 -left-5 bg-emerald-600 text-white rounded-2xl p-4 shadow-lg">
-                <div className="text-3xl font-extrabold">2020</div>
-                <div className="text-xs text-emerald-100">Year Founded</div>
+
+              <div className="absolute z-20 -bottom-6 -left-5 md:-left-8 bg-emerald-700 text-white rounded-2xl px-6 py-5 shadow-xl">
+                <div className="text-3xl font-extrabold">5+</div>
+                <div className="text-sm text-emerald-100">
+                  Years of Learning
+                </div>
               </div>
             </motion.div>
+
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="text-sm font-bold tracking-[0.18em] text-emerald-700 uppercase">
+                Our Story
+              </span>
+
+              <h2 className="mt-3 text-3xl md:text-5xl font-bold leading-tight">
+                A place where every child
+                <span className="text-emerald-700"> can grow.</span>
+              </h2>
+
+              <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+                Founded in 2020, Ujjwala Global Academy began with a vision
+                of creating an environment where education goes beyond
+                textbooks and examinations.
+              </p>
+
+              <p className="mt-5 text-gray-600 leading-relaxed">
+                Our approach focuses on developing knowledgeable,
+                responsible and confident students. We believe that
+                meaningful education combines academic learning with
+                character, creativity, discipline and a sense of
+                responsibility towards others.
+              </p>
+
+              <p className="mt-5 text-gray-600 leading-relaxed">
+                Today, the academy continues to work towards creating a
+                supportive learning community where students are encouraged
+                to discover their interests, express themselves and work
+                towards their aspirations.
+              </p>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4 mt-9">
+                <div className="rounded-2xl bg-emerald-50 border border-emerald-100 p-5">
+                  <div className="text-2xl md:text-3xl font-extrabold text-emerald-700">
+                    2020
+                  </div>
+                  <div className="text-sm text-gray-500 mt-1">
+                    Founded
+                  </div>
+                </div>
+
+                <div className="rounded-2xl bg-[#faf7ed] border border-[#eadfbf] p-5">
+                  <div className="text-2xl md:text-3xl font-extrabold text-gray-900">
+                    300+
+                  </div>
+                  <div className="text-sm text-gray-500 mt-1">
+                    Students
+                  </div>
+                </div>
+
+                <div className="rounded-2xl bg-emerald-50 border border-emerald-100 p-5">
+                  <div className="text-2xl md:text-3xl font-extrabold text-emerald-700">
+                    4+
+                  </div>
+                  <div className="text-sm text-gray-500 mt-1">
+                    Awards
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* ── CORE VALUES ── */}
-      <section className="py-14 bg-gray-50">
+
+      {/* =====================================================
+          WHAT WE BELIEVE
+      ====================================================== */}
+      <section className="py-20 md:py-24 bg-[#f8f7f2]">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-10"
+            className="text-center max-w-2xl mx-auto mb-14"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Our Core Values</h2>
+            <span className="text-sm font-bold tracking-[0.18em] text-emerald-700 uppercase">
+              What We Believe
+            </span>
+
+            <h2 className="mt-3 text-3xl md:text-5xl font-bold">
+              Education that shapes
+              <span className="text-emerald-700"> more than grades.</span>
+            </h2>
+
+            <p className="mt-5 text-gray-600 text-lg leading-relaxed">
+              Our educational philosophy is built around the idea that
+              students need knowledge, values and confidence to navigate
+              the world around them.
+            </p>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-            {coreValues.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-              >
-                <div className="text-3xl mb-3">{v.icon}</div>
-                <h3 className="font-bold text-gray-900 mb-1">{v.title}</h3>
-                <p className="text-sm text-gray-500">{v.desc}</p>
-              </motion.div>
-            ))}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            {coreValues.map((value, index) => {
+              const Icon = value.icon;
+
+              return (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="group bg-white rounded-[1.5rem] p-7 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-6 group-hover:bg-emerald-700 group-hover:text-white transition-colors">
+                    <Icon className="w-7 h-7" />
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-3">
+                    {value.title}
+                  </h3>
+
+                  <p className="text-gray-500 leading-relaxed">
+                    {value.desc}
+                  </p>
+                </motion.div>
+              );
+            })}
+
           </div>
         </div>
       </section>
 
-      {/* ── VISION & MISSION ── */}
-      <section id="vision" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Vision & Mission</h2>
-            <p className="text-gray-500 text-lg">Our guiding principles that shape the future of education</p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* =====================================================
+          VISION + MISSION
+      ====================================================== */}
+      <section className="py-20 md:py-24 bg-white">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            {/* Vision */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="bg-gradient-to-br from-emerald-50 to-white rounded-2xl shadow-sm border border-emerald-100 p-8"
+              className="relative overflow-hidden rounded-[2rem] bg-emerald-700 text-white p-8 md:p-10"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-                  <Eye className="w-6 h-6 text-emerald-600" />
+              <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-white/10" />
+
+              <div className="relative z-10">
+
+                <div className="w-14 h-14 bg-white/15 rounded-2xl flex items-center justify-center mb-7">
+                  <Eye className="w-7 h-7" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Our Vision</h3>
+
+                <span className="text-sm font-semibold text-emerald-100 uppercase tracking-widest">
+                  Our Vision
+                </span>
+
+                <h3 className="text-3xl md:text-4xl font-bold mt-3 mb-5">
+                  Preparing students for a changing world.
+                </h3>
+
+                <p className="text-emerald-50 text-lg leading-relaxed">
+                  To nurture creative, confident and responsible individuals
+                  who are equipped to learn continuously, think independently
+                  and contribute positively to society.
+                </p>
+
               </div>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                To be a leading educational institution that nurtures creative minds, builds strong
-                character, and prepares students to become responsible global citizens who contribute
-                positively to society.
-              </p>
             </motion.div>
 
+
+            {/* Mission */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="bg-gradient-to-br from-green-50 to-white rounded-2xl shadow-sm border border-green-100 p-8"
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.12 }}
+              className="relative overflow-hidden rounded-[2rem] bg-[#faf7ed] border border-[#eadfbf] p-8 md:p-10"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                  <Target className="w-6 h-6 text-green-600" />
+
+              <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-[#d9b96e]/15" />
+
+              <div className="relative z-10">
+
+                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-7 shadow-sm">
+                  <Target className="w-7 h-7 text-emerald-700" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Our Mission</h3>
+
+                <span className="text-sm font-semibold text-emerald-700 uppercase tracking-widest">
+                  Our Mission
+                </span>
+
+                <h3 className="text-3xl md:text-4xl font-bold mt-3 mb-5">
+                  Learning with purpose.
+                </h3>
+
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  To provide quality education in a supportive environment
+                  that encourages intellectual growth, strong values,
+                  creativity, discipline and social responsibility.
+                </p>
+
               </div>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                To provide comprehensive, quality education that fosters intellectual growth, moral
-                values, and social responsibility, enabling students to achieve their full potential
-                and become leaders of tomorrow.
-              </p>
             </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* ── FOUNDER'S MESSAGE ── */}
-      <section className="py-16 bg-gray-50">
+
+      {/* =====================================================
+          FOUNDER MESSAGE
+      ====================================================== */}
+      <section className="py-20 md:py-24 bg-[#f8f7f2]">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-            {/* Photo */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              className="relative order-2 lg:order-1"
-            >
-              <div className="relative inline-block w-full">
-                <img
-                  src={founderImg}
-                  alt="Mr. Pradeep Singh — Founder & Director"
-                  className="rounded-2xl shadow-xl w-full max-w-sm mx-auto object-cover"
-                />
-                <div className="absolute -bottom-5 -right-5 bg-emerald-700 text-white rounded-2xl p-4 shadow-lg text-center">
-                  <div className="font-bold">Mr. Pradeep Singh</div>
-                  <div className="text-xs text-emerald-200">Founder & Director</div>
-                </div>
-              </div>
-            </motion.div>
 
-            {/* Text */}
+            {/* Image */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="order-1 lg:order-2"
-            >
-              <span className="inline-block bg-emerald-50 text-emerald-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-                Founder's Message
-              </span>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Message from Our Founder & Director</h2>
-              <blockquote className="text-lg text-emerald-700 italic border-l-4 border-emerald-400 pl-4 mb-5">
-                "True education empowers every child to dream, to persevere, and to achieve greatness
-                with integrity and empathy."
-              </blockquote>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Dear Parents, Students and Well-Wishers,
-              </p>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                When the idea of Ujjwala Global Academy was first envisioned, the goal was simple yet
-                meaningful — to create a place where children receive not only quality education but
-                also the guidance needed to become confident, responsible and thoughtful individuals.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Our institution stands on the values of dedication, discipline and continuous
-                improvement. Together, let us nurture young minds who will contribute positively to
-                their families, communities and the nation.
-              </p>
-              <div className="mt-6 pt-5 border-t border-gray-200">
-                <div className="font-bold text-gray-900">Mr. Pradeep Singh</div>
-                <div className="text-gray-500 text-sm">Founder & Director, Ujjwala Global Academy</div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── PRINCIPAL'S MESSAGE ── */}
-      <section id="principal" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-            {/* Text */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <span className="inline-block bg-emerald-50 text-emerald-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-                Principal's Message
-              </span>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">From the Principal's Desk</h2>
-              <blockquote className="text-lg text-emerald-700 italic border-l-4 border-emerald-400 pl-4 mb-5">
-                "True education empowers every child to dream, to persevere, and to achieve greatness
-                with integrity and empathy."
-              </blockquote>
-              <p className="text-gray-600 mb-4 leading-relaxed">Dear Parents and Students,</p>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                At Ujjwala Global Academy, our vision is to inspire lifelong learners and
-                compassionate leaders. We strive to create a vibrant environment where curiosity is
-                encouraged, talents are discovered, and every child is valued for their unique
-                potential.
-              </p>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Our dedicated educators are committed to nurturing not only academic achievement but
-                also personal growth, ethical values, and social responsibility.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Let us work together to build a community of excellence, joy, and respect — where
-                every day is a new opportunity to learn, grow, and make a positive difference.
-              </p>
-              <div className="mt-6 pt-5 border-t border-gray-200">
-                <div className="font-bold text-gray-900">Mrs. Amita Singh</div>
-                <div className="text-gray-500 text-sm">Principal, Ujjwala Global Academy</div>
-              </div>
-            </motion.div>
-
-            {/* Photo */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
               className="relative"
             >
+              <div className="absolute -top-5 -left-5 w-28 h-28 border-2 border-[#d9b96e]/50 rounded-3xl" />
+
               <img
-                src={principalImg}
-                alt="Mrs. Amita Singh — Principal"
-                className="rounded-2xl shadow-xl w-full max-w-sm mx-auto object-cover"
+                src={founderImg}
+                alt="Mr. Pradeep Singh - Founder and Director"
+                className="relative z-10 w-full max-w-md mx-auto h-[500px] object-cover rounded-[2rem] shadow-2xl"
               />
-              <div className="absolute -bottom-5 -right-5 bg-emerald-700 text-white rounded-2xl p-4 shadow-lg text-center">
-                <div className="font-bold">Mrs. Amita Singh</div>
-                <div className="text-xs text-emerald-200">Principal</div>
+
+              <div className="absolute z-20 -bottom-6 -right-2 md:right-6 bg-emerald-700 text-white rounded-2xl px-6 py-4 shadow-xl">
+                <div className="font-bold">Mr. Pradeep Singh</div>
+                <div className="text-sm text-emerald-200">
+                  Founder & Director
+                </div>
               </div>
             </motion.div>
+
+
+            {/* Text */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+
+              <span className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 rounded-full px-4 py-2 text-sm font-semibold">
+                <Sparkles className="w-4 h-4" />
+                Founder's Message
+              </span>
+
+              <h2 className="text-3xl md:text-5xl font-bold mt-5 mb-7 leading-tight">
+                Building a foundation
+                <span className="text-emerald-700"> for life.</span>
+              </h2>
+
+              {/* DIFFERENT FOUNDER QUOTE */}
+              <blockquote className="relative pl-6 border-l-4 border-[#d9b96e] mb-7">
+                <p className="text-xl md:text-2xl font-medium text-emerald-800 italic leading-relaxed">
+                  “Education is not merely about preparing a child for a
+                  career; it is about preparing them for life.”
+                </p>
+              </blockquote>
+
+              <p className="text-gray-600 leading-relaxed mb-5">
+                Dear Parents, Students and Well-Wishers,
+              </p>
+
+              <p className="text-gray-600 leading-relaxed mb-5">
+                When Ujjwala Global Academy was envisioned, the aim was to
+                create a learning environment where children could receive
+                quality education while also developing confidence,
+                discipline and strong values.
+              </p>
+
+              <p className="text-gray-600 leading-relaxed">
+                We believe that every child deserves opportunities to learn,
+                explore and discover their strengths. Our journey continues
+                with the support of our students, parents and educators who
+                share this vision.
+              </p>
+
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="font-bold text-lg">Mr. Pradeep Singh</div>
+                <div className="text-gray-500">
+                  Founder & Director, Ujjwala Global Academy
+                </div>
+              </div>
+
+            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* ── CONTACT BAR ── */}
-      <section className="py-14 bg-gradient-to-r from-emerald-700 to-emerald-600 text-white">
+
+      {/* =====================================================
+          PRINCIPAL MESSAGE
+      ====================================================== */}
+      <section id="principal" className="py-20 md:py-24 bg-white">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-2">Get in Touch</h2>
-            <p className="text-emerald-100">We'd love to hear from you</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {[
-              { icon: MapPin, label: 'Address', value: 'Kisan Path, Meesa Road, Noorpur Baheta,\nGosaiganj, Lucknow – 226501' },
-              { icon: Phone, label: 'Phone', value: '+91 9451690636' },
-              { icon: Mail, label: 'Email', value: 'ujjwalaglobalacademy@gmail.com' },
-            ].map((c) => (
-              <div key={c.label} className="text-center">
-                <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <c.icon className="w-7 h-7" />
-                </div>
-                <h3 className="font-semibold text-lg mb-1">{c.label}</h3>
-                <p className="text-emerald-100 text-sm whitespace-pre-line">{c.value}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-white text-emerald-700 hover:bg-emerald-50 px-7 py-3 rounded-full font-bold transition-colors"
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+            {/* Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="order-2 lg:order-1"
             >
-              Contact Us <ArrowRight className="w-4 h-4" />
-            </Link>
+
+              <span className="inline-flex items-center gap-2 bg-[#faf7ed] border border-[#eadfbf] text-emerald-700 rounded-full px-4 py-2 text-sm font-semibold">
+                <Users className="w-4 h-4" />
+                Principal's Message
+              </span>
+
+              <h2 className="text-3xl md:text-5xl font-bold mt-5 mb-7 leading-tight">
+                Every child deserves
+                <span className="text-emerald-700"> room to flourish.</span>
+              </h2>
+
+              {/* DIFFERENT PRINCIPAL QUOTE */}
+              <blockquote className="relative pl-6 border-l-4 border-emerald-500 mb-7">
+                <p className="text-xl md:text-2xl font-medium text-emerald-800 italic leading-relaxed">
+                  “Every child carries a unique potential; our responsibility
+                  is to create the environment where it can flourish.”
+                </p>
+              </blockquote>
+
+              <p className="text-gray-600 leading-relaxed mb-5">
+                Dear Parents and Students,
+              </p>
+
+              <p className="text-gray-600 leading-relaxed mb-5">
+                At Ujjwala Global Academy, we strive to create a vibrant
+                environment where students feel encouraged to ask questions,
+                discover their talents and approach learning with confidence.
+              </p>
+
+              <p className="text-gray-600 leading-relaxed mb-5">
+                Our educators work to support both academic development and
+                personal growth. We believe that patience, respect,
+                responsibility and curiosity are essential parts of a
+                student's journey.
+              </p>
+
+              <p className="text-gray-600 leading-relaxed">
+                Together with parents and our wider school community, we aim
+                to help every student take meaningful steps towards their
+                aspirations.
+              </p>
+
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="font-bold text-lg">Mrs. Amita Singh</div>
+                <div className="text-gray-500">
+                  Principal, Ujjwala Global Academy
+                </div>
+              </div>
+
+            </motion.div>
+
+
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="relative order-1 lg:order-2"
+            >
+
+              <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-emerald-100/70 rounded-full" />
+
+              <img
+                src={principalImg}
+                alt="Mrs. Amita Singh - Principal"
+                className="relative z-10 w-full max-w-md mx-auto h-[500px] object-cover rounded-[2rem] shadow-2xl"
+              />
+
+              <div className="absolute z-20 -bottom-6 -left-2 md:left-6 bg-white rounded-2xl px-6 py-4 shadow-xl border border-gray-100">
+                <div className="font-bold text-gray-900">
+                  Mrs. Amita Singh
+                </div>
+                <div className="text-sm text-emerald-700">
+                  Principal
+                </div>
+              </div>
+
+            </motion.div>
+
           </div>
         </div>
       </section>
+
+
+      {/* =====================================================
+          WHY UJJWALA
+      ====================================================== */}
+      <section className="py-20 md:py-24 bg-[#f8f7f2]">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+
+              <span className="text-sm font-bold tracking-[0.18em] text-emerald-700 uppercase">
+                Why Ujjwala
+              </span>
+
+              <h2 className="mt-3 text-3xl md:text-5xl font-bold leading-tight">
+                More than a school.
+                <span className="block text-emerald-700">
+                  A learning community.
+                </span>
+              </h2>
+
+              <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+                We aim to create an environment where students can feel
+                supported, challenged and inspired throughout their learning
+                journey.
+              </p>
+
+            </motion.div>
+
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="bg-white rounded-[2rem] p-7 md:p-9 shadow-sm border border-gray-100"
+            >
+
+              <div className="space-y-5">
+
+                {highlights.map((item, index) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, x: 15 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.4,
+                      delay: index * 0.08,
+                    }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                      <CheckCircle className="w-5 h-5" />
+                    </div>
+
+                    <p className="text-gray-700 font-medium pt-1.5">
+                      {item}
+                    </p>
+                  </motion.div>
+                ))}
+
+              </div>
+
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* =====================================================
+          CONTACT CTA
+      ====================================================== */}
+      <section className="relative overflow-hidden bg-emerald-800 py-20">
+
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-white/5" />
+        <div className="absolute -bottom-40 -left-20 w-96 h-96 rounded-full bg-[#d9b96e]/10" />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+
+            <span className="inline-block bg-white/10 border border-white/20 text-emerald-100 rounded-full px-5 py-2 text-sm font-semibold mb-6">
+              BEGIN THE JOURNEY
+            </span>
+
+            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+              Let's build a brighter future
+              <span className="block text-[#e6cf91]">
+                together.
+              </span>
+            </h2>
+
+            <p className="mt-5 text-emerald-100 text-lg max-w-2xl mx-auto leading-relaxed">
+              Have questions about Ujjwala Global Academy? We'd love to
+              connect with you and help you learn more about our school.
+            </p>
+
+            <div className="mt-9">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-white text-emerald-800 hover:bg-[#faf7ed] px-8 py-4 rounded-full font-bold transition-all shadow-xl"
+              >
+                Contact Us
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+
+          </motion.div>
+
+        </div>
+      </section>
+
+
+      {/* =====================================================
+          CONTACT INFO
+      ====================================================== */}
+      <section className="bg-white py-12 border-t border-gray-100">
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div className="flex items-center gap-4 justify-center md:justify-start">
+              <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                <MapPin className="w-5 h-5" />
+              </div>
+
+              <div>
+                <div className="text-sm text-gray-400">Visit Us</div>
+                <div className="font-semibold text-gray-800">
+                  Gosaiganj, Lucknow
+                </div>
+              </div>
+            </div>
+
+
+            <div className="flex items-center gap-4 justify-center">
+              <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                <Phone className="w-5 h-5" />
+              </div>
+
+              <div>
+                <div className="text-sm text-gray-400">Call Us</div>
+                <div className="font-semibold text-gray-800">
+                  +91 9451690636
+                </div>
+              </div>
+            </div>
+
+
+            <div className="flex items-center gap-4 justify-center md:justify-end">
+              <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                <Mail className="w-5 h-5" />
+              </div>
+
+              <div>
+                <div className="text-sm text-gray-400">Email Us</div>
+                <div className="font-semibold text-gray-800 break-all">
+                  ujjwalaglobalacademy@gmail.com
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
     </div>
   );
 };
